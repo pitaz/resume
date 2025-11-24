@@ -66,7 +66,20 @@ npm run dev
 
 6. **Contact** (`app/components/Contact.tsx`)
    - Update email, LinkedIn, and GitHub links
-   - Connect the form to your backend/email service
+   - Form submission is configured to use Resend API
+
+### Email Setup (Contact Form)
+
+The contact form uses Resend to send emails. To set it up:
+
+1. Sign up for a free account at [Resend](https://resend.com)
+2. Get your API key from the [Resend dashboard](https://resend.com/api-keys)
+3. Create a `.env.local` file in the root directory:
+   ```
+   RESEND_API_KEY=re_your_api_key_here
+   ```
+4. Update the `from` email in `app/api/contact/route.ts` with your verified domain (or use `onboarding@resend.dev` for testing)
+5. The form will send emails to the address specified in the `to` field of the API route
 
 7. **Metadata** (`app/layout.tsx`)
    - Update the title and description for SEO

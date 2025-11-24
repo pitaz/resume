@@ -10,7 +10,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center space-x-6">
             <a
-              href="https://github.com"
+              href="https://github.com/pitaz"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"
@@ -21,7 +21,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/peter-odekwo/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"
@@ -32,7 +32,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:peter.odekwo@gmail.com"
               className="text-gray-400 hover:text-white transition-colors"
               aria-label="Email"
             >
@@ -54,4 +54,3 @@ export default function Footer() {
     </footer>
   );
 }
-

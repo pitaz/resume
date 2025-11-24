@@ -6,11 +6,27 @@ interface SkillCategory {
 const skillCategories: SkillCategory[] = [
   {
     category: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML/CSS"],
+    skills: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "HTML/CSS",
+      "React Native",
+      "Expo",
+    ],
   },
   {
     category: "Backend",
-    skills: ["Node.js", "Python", "PostgreSQL", "MongoDB", "REST APIs"],
+    skills: [
+      "Node.js",
+      "Python",
+      "PostgreSQL",
+      "MongoDB",
+      "REST APIs",
+      "WebSockets",
+      "Nest.js",
+    ],
   },
   {
     category: "Tools & Others",
@@ -63,20 +79,22 @@ export default function Skills() {
         {/* Additional skills visualization */}
         <div className="mt-16 text-center">
           <div className="inline-flex flex-wrap justify-center gap-4">
-            {["Problem Solving", "UI/UX Design", "Agile Methodology", "Team Collaboration"].map(
-              (skill) => (
-                <span
-                  key={skill}
-                  className="px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full text-gray-800 dark:text-gray-200 font-medium"
-                >
-                  {skill}
-                </span>
-              )
-            )}
+            {[
+              "Problem Solving",
+              "UI/UX Design",
+              "Agile Methodology",
+              "Team Collaboration",
+            ].map((skill) => (
+              <span
+                key={skill}
+                className="px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full text-gray-800 dark:text-gray-200 font-medium"
+              >
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
       </div>
     </section>
   );
 }
-

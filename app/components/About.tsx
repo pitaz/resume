@@ -33,12 +33,14 @@ export default function About() {
           <div className="relative">
             <div className="aspect-square rounded-2xl bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 p-8 flex items-center justify-center">
               <div className="text-center space-y-4">
-                <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-4xl font-bold">
-                  JD
+                <div className="w-32 h-32 mx-auto rounded-full overflow-hidden">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/portfolio-17056.appspot.com/o/TE35HHN01-U03B0MZMTRS-43204f92b3ab-512.png?alt=media&token=2bac3c56-7b76-46d6-87ac-3e169b27998d"
+                    alt="Peter Odekwo"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Placeholder for your photo
-                </p>
+                <p className="text-gray-600 dark:text-gray-400">Peter Odekwo</p>
               </div>
             </div>
             {/* Decorative elements */}
@@ -50,4 +52,3 @@ export default function About() {
     </section>
   );
 }
-

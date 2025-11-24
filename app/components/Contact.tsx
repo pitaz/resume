@@ -9,16 +9,47 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      alert("Thank you for your message! I'll get back to you soon.");
-      setFormData({ name: "", email: "", message: "" });
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "Thank you for your message! I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: data.error || "Something went wrong. Please try again.",
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "Failed to send message. Please try again later.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const handleChange = (
@@ -60,7 +91,7 @@ export default function Contact() {
 
             <div className="space-y-6">
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:peter.odekwo@gmail.com"
                 className="flex items-center space-x-4 group"
               >
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
@@ -81,13 +112,13 @@ export default function Contact() {
                     Email
                   </p>
                   <p className="text-gray-900 dark:text-gray-100 font-medium">
-                    your.email@example.com
+                    peter.odekwo@gmail.com
                   </p>
                 </div>
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/peter-odekwo/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-4 group"
@@ -106,13 +137,13 @@ export default function Contact() {
                     LinkedIn
                   </p>
                   <p className="text-gray-900 dark:text-gray-100 font-medium">
-                    linkedin.com/in/yourprofile
+                    linkedin.com/in/peter-odekwo
                   </p>
                 </div>
               </a>
 
               <a
-                href="https://github.com"
+                href="https://github.com/pitaz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-4 group"
@@ -131,7 +162,7 @@ export default function Contact() {
                     GitHub
                   </p>
                   <p className="text-gray-900 dark:text-gray-100 font-medium">
-                    github.com/yourusername
+                    github.com/pitaz
                   </p>
                 </div>
               </a>
@@ -198,6 +229,18 @@ export default function Contact() {
                 ></textarea>
               </div>
 
+              {submitStatus.type && (
+                <div
+                  className={`p-4 rounded-lg ${
+                    submitStatus.type === "success"
+                      ? "bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800"
+                      : "bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800"
+                  }`}
+                >
+                  <p className="text-sm font-medium">{submitStatus.message}</p>
+                </div>
+              )}
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -212,4 +255,3 @@ export default function Contact() {
     </section>
   );
 }
-
